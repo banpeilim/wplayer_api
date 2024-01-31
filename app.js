@@ -20,8 +20,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Routes
-// const routes = require("./routes");
-// app.use("/api", routes);
+const routes = require("./routes");
+app.use("/api", routes);
 
 // Server
 const PORT = process.env.PORT || 3000;
