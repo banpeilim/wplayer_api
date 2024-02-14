@@ -1,6 +1,5 @@
-const Product = require("./model");
+const { Product, Rate } = require("./model");
 
-// Controller functions
 exports.getAllProducts = async (req, res) => {
   try {
     const products = await Product.find();
@@ -9,3 +8,13 @@ exports.getAllProducts = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.getAllRates = async (req, res) => {
+  try {
+    const rates = await Rate.find();
+    res.status(200).json(rates);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+

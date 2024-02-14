@@ -4,6 +4,8 @@ const controller = require("./controller");
 
 // Routes
 router.get("/products", controller.getAllProducts);
+router.get("/rates", controller.getAllRates);
+
 
 
 module.exports = router;

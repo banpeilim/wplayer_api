@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const cors = require("cors"); // Import the cors middleware
 require("dotenv").config();
 
 const app = express();
@@ -18,6 +19,7 @@ mongoose
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors()); // Use the cors middleware to enable CORS
 
 // Routes
 const routes = require("./routes");

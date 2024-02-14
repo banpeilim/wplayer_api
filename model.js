@@ -15,6 +15,18 @@ const productSchema = new mongoose.Schema({
   },
 });
 
-const Product = mongoose.model("Product", productSchema);
+const rateSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  vote: {
+    type: Number,
+    required: true,
+  },
+});
 
-module.exports = Product;
+const Product = mongoose.model("Product", productSchema);
+const Rate = mongoose.model("Rate", rateSchema);
+
+module.exports = { Product, Rate };
