@@ -9,6 +9,36 @@ exports.getAllProducts = async (req, res) => {
   }
 };
 
+exports.updateProduct = async (req, res) => {
+  const { productId } = req.params;
+  const { price, stock } = req.body;
+
+  try {
+    // Check if the product exists
+    const product = await Product.findById(productId);
+    console.log(product);
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    // Update the product with new price and stock
+    if (price) {
+      product.price = price;
+    }
+    if (stock) {
+      product.stock = stock;
+    }
+
+    // Save the updated product
+    await product.save();
+
+    // Send a success response
+    res.status(200).json({ message: "Product updated successfully", product });
+  } catch (error) {
+    // Handle errors
+    res.status(500).json({ error: error.message });
+  }
+};
 exports.getAllRates = async (req, res) => {
   try {
     const rates = await Rate.find();

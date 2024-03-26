@@ -10,6 +10,6 @@ router.post("/good", controller.postGood);
 router.post("/average", controller.postAverage);
 router.post("/poor", controller.postPoor);
 router.post("/reset", controller.postReset);
-
+router.put("/products/:productId", controller.updateProduct);
 
 http: module.exports = router;
